@@ -1,1 +1,2 @@
-# webdesign-tarefa6
+Instituto Acadêmico
+Projeto de exemplo para atividade de Web Design.
