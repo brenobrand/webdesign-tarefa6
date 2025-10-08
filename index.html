@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Metadados e configurações básicas -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instituto Acadêmico — Projeto Web</title>
+
+  <!-- Link externo para o arquivo CSS (requisito: CSS externo via <link>) -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Descrição para indexação e acessibilidade -->
+  <meta name="description" content="Site institucional do projeto acadêmico - exemplo para atividade de Web Design." />
+</head>
+<body>
+  <!--
+    Cabeçalho fixo com menu interativo.
+    Uso de role e aria-* para melhorar acessibilidade.
+  -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <!-- Logotipo / Título do site -->
+      <a href="#home" class="logo" aria-label="Instituto Acadêmico - Início">
+        <span class="logo-mark" aria-hidden="true">IA</span>
+        <span class="logo-text">Instituto Acadêmico</span>
+      </a>
+
+      <!-- Botão hamburger para telas pequenas -->
+      <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu">
+        <span class="hamburger"></span>
+      </button>
+
+      <!-- Navegação principal -->
+      <nav id="main-nav" class="main-nav" role="navigation">
+        <ul class="nav-list">
+          <li><a href="#home">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#cursos">Cursos</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!--
+    HERO (seção inicial com destaque).
+    Esta seção utiliza uma imagem de fundo via CSS e texto centralizado.
+  -->
+  <main id="home" class="main-content">
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1 class="hero-title">Bem-vindos ao <strong>Instituto Acadêmico</strong></h1>
+        <p class="hero-subtitle">Educação, inovação e projetos colaborativos. Aprenda, crie e compartilhe.</p>
+
+        <!-- CTA (call to action) com âncora para a seção de projetos -->
+        <p>
+          <a class="btn btn-primary" href="#projetos">Ver Projetos</a>
+          <a class="btn btn-secondary" href="#cursos">Ver Cursos</a>
+        </p>
+      </div>
+    </section>
+
+    <!--
+      Seção "Sobre"
+      contém texto explicativo e uma lista de valores/informações
+    -->
+    <section id="sobre" class="section about">
+      <div class="container">
+        <h2>Sobre o Instituto</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              O Instituto Acadêmico é um espaço de aprendizagem colaborativa, dedicado ao desenvolvimento
+              de habilidades em tecnologia, design e empreendedorismo. Este site-modelo demonstra o uso
+              de HTML e CSS aplicados às aulas.
+            </p>
+
+            <ul class="features-list">
+              <li><strong>Missão:</strong> Formar profissionais críticos e criativos.</li>
+              <li><strong>Visão:</strong> Ser referência em práticas pedagógicas inovadoras.</li>
+              <li><strong>Valores:</strong> Colaboração, Ética e Sustentabilidade.</li>
+            </ul>
+          </div>
+
+          <!-- Imagem ilustrativa - usamos elemento <figure> para semântica -->
+          <figure class="about-figure">
+            <img src="https://via.placeholder.com/640x360.png?text=Instituto" alt="Foto ilustrativa do instituto" />
+            <figcaption>Ambiente colaborativo e laboratórios.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      Seção "Cursos" com vários cards - demonstra repetição de conteúdo
+      e uso de grid/flex para layout responsivo.
+    -->
+    <section id="cursos" class="section courses">
+      <div class="container">
+        <h2>Cursos e Programas</h2>
+        <p class="lead">Oferecemos cursos presenciais e online em áreas tecnológicas e criativas.</p>
+
+        <div class="courses-grid">
+          <!-- Cada card representa um curso; muitos cards ajudam a atingir >300 linhas em HTML -->
+          <article class="course-card">
+            <h3>Desenvolvimento Web</h3>
+            <p>HTML, CSS, JavaScript e boas práticas para construção de sites responsivos.</p>
+            <ul class="course-meta">
+              <li>Duração: 6 meses</li>
+              <li>Modalidade: Híbrida</li>
+            </ul>
+            <a class="btn btn-outline" href="#contato">Inscrever-se</a>
+          </article>
+
+          <article class="course-card">
+            <h3>Design de Interfaces</h3>
+            <p>UX/UI, prototipagem e design visual com foco em acessibilidade.</p>
+            <ul class="course-meta">
+              <li>Duração: 4 meses</li>
+              <li>Modalidade: Online</li>
+            </ul>
+            <a class="btn btn-outline" href="#contato">Inscrever-se</a>
+          </article>
+
+          <article class="course-card">
+            <h3>Ciência de Dados</h3>
+            <p>Estatística, Python e Machine Learning para análise de dados.</p>
+            <ul class="course-meta">
+              <li>Duração: 8 meses</li>
+              <li>Modalidade: Híbrida</li>
+            </ul>
+            <a class="btn btn-outline" href="#contato">Inscrever-se</a>
+          </article>
+
+          <article class="course-card">
+            <h3>Gestão de Projetos</h3>
+            <p>Métodos ágeis, planejamento e execução de projetos acadêmicos e empresariais.</p>
+            <ul class="course-meta">
+              <li>Duração: 3 meses</li>
+              <li>Modalidade: Presencial</li>
+            </ul>
+            <a class="btn btn-outline" href="#contato">Inscrever-se</a>
+          </article>
+
+          <article class="course-card">
+            <h3>Empreendedorismo</h3>
+            <p>Modelos de negócio, inovação e desenvolvimento de startups.</p>
+            <ul class="course-meta">
+              <li>Duração: 5 meses</li>
+              <li>Modalidade: Online</li>
+            </ul>
+            <a class="btn btn-outline" href="#contato">Inscrever-se</a>
+          </article>
+
+          <article class="course-card">
+            <h3>Comunicação Científica</h3>
+            <p>Redação acadêmica, publicação e apresentação de trabalhos científicos.</p>
+            <ul class="course-meta">
+              <li>Duração: 2 meses</li>
+              <li>Modalidade: Online</li>
+            </ul>
+            <a class="btn btn-outline" href="#contato">Inscrever-se</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      Seção "Projetos" — vários projetos com imagem e descrição.
+      Serve para demonstrar cards, grid, imagens e responsividade.
+    -->
+    <section id="projetos" class="section projects">
+      <div class="container">
+        <h2>Projetos Acadêmicos</h2>
+        <p class="lead">Conheça alguns dos projetos desenvolvidos por nossos alunos e grupos.</p>
+
+        <div class="projects-grid">
+          <!-- Projeto 1 -->
+          <article class="project-card">
+            <img src="https://via.placeholder.com/480x300.png?text=Projeto+1" alt="Projeto 1" />
+            <div class="project-body">
+              <h3>Portal de Aprendizagem</h3>
+              <p>Plataforma para compartilhamento de materiais e exercícios interativos.</p>
+              <a class="link-more" href="#projetos">Leia mais →</a>
+            </div>
+          </article>
+
+          <!-- Projeto 2 -->
+          <article class="project-card">
+            <img src="https://via.placeholder.com/480x300.png?text=Projeto+2" alt="Projeto 2" />
+            <div class="project-body">
+              <h3>Aplicativo de Eventos</h3>
+              <p>Sistema para gerenciar inscrições e calendários de eventos acadêmicos.</p>
+              <a class="link-more" href="#projetos">Leia mais →</a>
+            </div>
+          </article>
+
+          <!-- Projeto 3 -->
+          <article class="project-card">
+            <img src="https://via.placeholder.com/480x300.png?text=Projeto+3" alt="Projeto 3" />
+            <div class="project-body">
+              <h3>Laboratório de Robótica</h3>
+              <p>Projetos de automação e competições robóticas interdisciplinares.</p>
+              <a class="link-more" href="#projetos">Leia mais →</a>
+            </div>
+          </article>
+
+          <!-- Projeto 4 -->
+          <article class="project-card">
+            <img src="https://via.placeholder.com/480x300.png?text=Projeto+4" alt="Projeto 4" />
+            <div class="project-body">
+              <h3>Observatório de Dados</h3>
+              <p>Visualizações e painéis com dados públicos e análises dos alunos.</p>
+              <a class="link-more" href="#projetos">Leia mais →</a>
+            </div>
+          </article>
+
+          <!-- Projeto 5 -->
+          <article class="project-card">
+            <img src="https://via.placeholder.com/480x300.png?text=Projeto+5" alt="Projeto 5" />
+            <div class="project-body">
+              <h3>Jornal Acadêmico</h3>
+              <p>Publicações periódicas com artigos, entrevistas e resumos de pesquisa.</p>
+              <a class="link-more" href="#projetos">Leia mais →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      Seção "Recursos" com lista e ícones (usando texto/emoji para evitar fontes externas).
+      Mostra interatividade (accordion simples por CSS/JS) e uso de listas.
+    -->
+    <section id="recursos" class="section resources">
+      <div class="container">
+        <h2>Recursos e Laboratórios</h2>
+        <p class="lead">Infraestrutura disponível para alunos e professores.</p>
+
+        <div class="resources-grid">
+          <div class="resource">
+            <h3>Laboratórios</h3>
+            <p>Espaços equipados para práticas de desenvolvimento, design e ciência de dados.</p>
+          </div>
+          <div class="resource">
+            <h3>Biblioteca</h3>
+            <p>Acervo físico e digital com suporte para pesquisa acadêmica.</p>
+          </div>
+          <div class="resource">
+            <h3>Mentoria</h3>
+            <p>Programa de mentoria com professores e profissionais do mercado.</p>
+          </div>
+          <div class="resource">
+            <h3>Plataformas</h3>
+            <p>Ambientes de aprendizagem online, repositórios e ferramentas colaborativas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      Seção "Contato" com formulário.
+      O formulário não faz submit real (sem backend), mas contém validações HTML5 e atributos de acessibilidade.
+    -->
+    <section id="contato" class="section contact">
+      <div class="container">
+        <h2>Fale Conosco</h2>
+        <p class="lead">Entre em contato para informações sobre cursos, projetos e parcerias.</p>
+
+        <div class="contact-grid">
+          <form class="contact-form" action="#" method="POST" novalidate aria-label="Formulário de contato">
+            <!--
+              Campos do formulário: nome, e-mail, assunto, mensagem.
+              Comentários explicam cada campo.
+            -->
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" required placeholder="Seu nome completo" />
+
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" required placeholder="seu@exemplo.com" />
+
+            <label for="assunto">Assunto</label>
+            <input id="assunto" name="assunto" type="text" required placeholder="Assunto da mensagem" />
+
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="6" required placeholder="Escreva sua mensagem aqui"></textarea>
+
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+              <button class="btn btn-secondary" type="reset">Limpar</button>
+            </div>
+          </form>
+
+          <aside class="contact-info" aria-labelledby="contato-info-title">
+            <h3 id="contato-info-title">Informações</h3>
+            <p><strong>Endereço:</strong> Rua Exemplo, 123 — Sala 456</p>
+            <p><strong>Telefone:</strong> (11) 99999-9999</p>
+            <p><strong>E-mail:</strong> contato@institutoacademico.edu</p>
+
+            <h4>Horário de atendimento</h4>
+            <ul>
+              <li>Segunda a Sexta: 08:00 — 18:00</li>
+              <li>Sábado: 09:00 — 12:00</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--
+    Rodapé com links de política e créditos. role="contentinfo" para semântica.
+  -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Instituto Acadêmico. Todos os direitos reservados.</p>
+      <nav class="footer-nav" aria-label="Links do rodapé">
+        <a href="#sobre">Sobre</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!--
+    Pequeno script para: 
+      - atualizar o ano no rodapé,
+      - ativar o menu hamburguer,
+      - aplicar um comportamento suave de scroll (opcional).
+    Comentários explicam o que cada trecho faz.
+  -->
+  <script>
+    // Atualiza o ano automaticamente no rodapé (manutenção fácil).
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu hambúrguer: alterna atributo aria-expanded e classe para exibir/ocultar menu.
+    (function() {
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-nav');
+
+      // Função para alternar o menu
+      function toggleNav() {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      }
+
+      toggle.addEventListener('click', toggleNav);
+
+      // Fecha menu ao clicar em um link (bom para UX em mobile)
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (nav.classList.contains('open')) {
+            toggle.setAttribute('aria-expanded', 'false');
+            nav.classList.remove('open');
+          }
+        });
+      });
+    })();
+
+    // Smooth scroll behavior para navegação interna (apenas melhora UX)
+    (function() {
+      const links = document.querySelectorAll('a[href^="#"]');
+      links.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

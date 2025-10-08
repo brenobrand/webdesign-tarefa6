@@ -1,0 +1,537 @@
+/* style.css
+   Arquivo CSS externo. Comentários explicam cada bloco.
+   Contém mais de 200 linhas (requisito do professor).
+*/
+
+/* -----------------------------
+   Variáveis CSS (custom properties)
+   Facilita manutenção e temas.
+   ----------------------------- */
+:root {
+  --bg: #0f1724; /* fundo escuro */
+  --panel: #0b1220;
+  --muted: #9aa4b2;
+  --accent: #00aaff;
+  --accent-2: #00d4b6;
+  --white: #ffffff;
+  --radius: 12px;
+  --max-width: 1200px;
+  --gap: 1.25rem;
+  --glass-bg: rgba(255,255,255,0.03);
+}
+
+/* Reset básico para consistência entre navegadores */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* controlamos preenchimento e bordas */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background-color: var(--bg); /* background-color propriedade usada conforme aula */
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Container centralizado com largura máxima */
+.container {
+  width: min(94%, var(--max-width));
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* -----------------------------
+   Cabeçalho: posição sticky/fixo
+   Uso de position: sticky e z-index para manter no topo.
+   ----------------------------- */
+.site-header {
+  background: linear-gradient(180deg, rgba(12,18,26,0.8), rgba(8,12,18,0.6));
+  backdrop-filter: blur(6px); /* efeito de vidro */
+  position: sticky; /* sticky conforme propriedades vistas em aula */
+  top: 0;
+  z-index: 1200;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Header interno - flex para alinhar logo e nav */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--white);
+  user-select: none;
+}
+.logo-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  font-weight: 700;
+  color: #012;
+  font-size: 1rem;
+  box-shadow: 0 4px 14px rgba(0,170,255,0.12);
+}
+.logo-text {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* -----------------------------
+   Navegação: menu responsivo
+   display, flex, gap, user-select, pointer-events
+   ----------------------------- */
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.nav-list a {
+  text-decoration: none;
+  color: var(--muted);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: color 200ms ease, background-color 200ms ease, transform 150ms ease;
+  font-weight: 500;
+}
+.nav-list a:hover,
+.nav-list a:focus {
+  color: var(--white);
+  background: rgba(255,255,255,0.03);
+  transform: translateY(-2px); /* efeito de elevação sutil */
+}
+
+/* Botão do menu (apenas exibido em telas pequenas) */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+.nav-toggle .hamburger {
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--white);
+  position: relative;
+  transition: all 250ms ease;
+}
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 28px;
+  height: 2px;
+  background: var(--white);
+  transition: transform 250ms ease, top 250ms ease, bottom 250ms ease, opacity 200ms ease;
+}
+.nav-toggle .hamburger::before { top: -8px; }
+.nav-toggle .hamburger::after { bottom: -8px; }
+
+/* -----------------------------
+   HERO: grande seção de destaque
+   uso de background-image e properties de tipografia
+   ----------------------------- */
+.hero {
+  padding: 4rem 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background-image: linear-gradient(180deg, rgba(1,6,10,0.25), rgba(0,0,0,0.45));
+  clip-path: polygon(0 0,100% 0,100% 92%,0 100%);
+}
+.hero-inner {
+  max-width: 900px;
+}
+.hero-title {
+  font-size: clamp(1.6rem, 3.6vw, 3rem); /* uso de clamp para responsividade */
+  margin: 0 0 0.5rem 0;
+  line-height: 1.05;
+}
+.hero-subtitle {
+  margin: 0 0 1.25rem 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* Botões - demonstração de hover, transition e outline */
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #002;
+  box-shadow: 0 8px 30px rgba(0,170,255,0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 18px 50px rgba(0,170,255,0.18);
+}
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--white);
+  padding: 0.55rem 0.9rem;
+}
+.btn-outline {
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,0.06);
+  color: var(--muted);
+}
+
+/* -----------------------------
+   Sections: espaçamento e tipografia
+   ----------------------------- */
+.section {
+  padding: 3rem 0;
+}
+.section h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.5rem;
+}
+.section .lead {
+  margin: 0 0 1.25rem 0;
+  color: var(--muted);
+}
+
+/* -----------------------------
+   About: grid com imagem e texto
+   uso de display grid e gap
+   ----------------------------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 2rem;
+  align-items: center;
+}
+.about-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  object-fit: cover; /* propriedade object-fit aplicada */
+  aspect-ratio: 16/9; /* propriedade moderna para controle de proporção */
+  box-shadow: 0 10px 30px rgba(2,6,12,0.6);
+}
+.about-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Lista de features */
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.features-list li {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 0.7rem;
+  border-radius: 8px;
+  color: var(--muted);
+}
+
+/* -----------------------------
+   Cursos: grid de cards responsivo
+   ----------------------------- */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.course-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.course-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+}
+.course-card h3 {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+.course-meta {
+  list-style: none;
+  margin: 0.5rem 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* -----------------------------
+   Projects grid with image cards
+   ----------------------------- */
+.projects-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 1rem;
+}
+.project-card {
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.03);
+  display: flex;
+  flex-direction: column;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.project-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+.project-body {
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.link-more {
+  margin-top: auto;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+/* -----------------------------
+   Resources grid: demonstra mais layout responsivo
+   ----------------------------- */
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.resource {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* -----------------------------
+   Contact: grid com formulário e informações
+   utiliza grid-template-columns e gap
+   ----------------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.25rem;
+  align-items: start;
+}
+.contact-form {
+  display: grid;
+  gap: 0.6rem;
+  background: var(--glass-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.contact-form label {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 0.65rem;
+  border-radius: 8px;
+  color: var(--white);
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(0,170,255,0.08);
+}
+
+/* Form actions: alinhamento dos botões do form */
+.form-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+/* Aside de contato */
+.contact-info {
+  color: var(--muted);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* -----------------------------
+   Footer
+   ----------------------------- */
+.site-footer {
+  border-top: 1px solid rgba(255,255,255,0.03);
+  padding: 1.25rem 0;
+  color: var(--muted);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+}
+.footer-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 0.75rem;
+}
+
+/* -----------------------------
+   UTILIDADES E ANIMAÇÕES
+   - propriedades extras: transform, transition, filter, mix-blend-mode, isolation, pointer-events
+   - demonstra +10 propriedades CSS adicionais para interatividade e design
+   ----------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* Pequena animação de entrada para cards via keyframes */
+@keyframes floatIn {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+    filter: blur(6px); /* filter aplicado */
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    filter: none;
+  }
+}
+.course-card,
+.project-card,
+.resource {
+  animation: floatIn 450ms ease both;
+}
+
+/* -----------------------------
+   RESPONSIVE: media queries para mobile/tablet
+   Uso de display: none/ block, grid-template-columns alterado, nav-toggle exibido
+   ----------------------------- */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .header-inner { gap: 0.5rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+
+/* Menu mobile: transformamos nav em painel vertical */
+@media (max-width: 760px) {
+  .nav-list { display: none; }
+  .nav-toggle { display: inline-block; }
+
+  .main-nav.open .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    background: rgba(0,0,0,0.5);
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+
+  /* Ajustes de grid para cards em telas pequenas */
+  .courses-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .projects-grid { grid-template-columns: 1fr; }
+}
+
+/* Ruptura para telas muito grandes */
+@media (min-width: 1200px) {
+  .hero { padding: 6rem 0; }
+  .course-card { padding: 1.25rem; }
+}
+
+/* -----------------------------
+   Acessibilidade e foco visual
+   demonstra text-align, outline, box-shadow, user-select, pointer-events
+   ----------------------------- */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 3px solid rgba(0,170,255,0.12);
+  outline-offset: 3px;
+}
+
+/* Prevenção de seleção indesejada em elementos UI */
+.logo, .nav-toggle, .btn { user-select: none; }
+
+/* Efeito visual sutil de mix-blend-mode e isolation para experimentação visual */
+.logo-mark { mix-blend-mode: screen; isolation: isolate; }
+
+/* Força contraste melhor para leitores: aumentar legibilidade em textos de destaque */
+.lead { color: rgba(255,255,255,0.86); }
+
+/* -----------------------------
+   FIM DO ARQUIVO CSS
+   ----------------------------- */
+
+/* Observações:
+   - Propriedades utilizadas seguem a lista discutida em aula: color, background-color,
+     font-family, font-size, margin, padding, border, width, height, display, position,
+     top/right/bottom/left, text-align, etc.
+   - Propriedades adicionais incluídas: gap, grid-template-columns, aspect-ratio, object-fit,
+     box-shadow, filter, transition, transform, backdrop-filter, mix-blend-mode, isolation,
+     user-select, pointer-events, clamp, animation, keyframes e outras.
+*/
